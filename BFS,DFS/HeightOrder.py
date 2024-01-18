@@ -8,41 +8,38 @@ sys.stdin = open("../input.txt", "r")
     a번의 학생의 키가 b번 학생의 키보다 작다면, a->b
 """
 
-def dfs(heights ,root):
+def dfs(graph, start):
+    visited = [False]*(N+1)
+    stack =[start]
 
-    n = len(heights)
-    smaller = [0]*  n
-
-    stack = []
-    stack.append(root)
     while stack:
-        i = stack.pop()
-        if heights[i]:
-            for j in heights[i]:
-                stack.append(j)
-                smaller[j] +=1
-    return smaller
+        v = stack.pop()
+        for i in graph[v]:
+            if not visited[i]:
+                stack.append(i)
+                visited[i] = True
+
+    return visited.count(True)
 
 
-N, M = map(int, input().split())
+# 학생들의 수 N과 비교 횟수 M을 입력 받습니다.
+N, M = map(int, sys.stdin.readline().split())
 
-heights = [[]for _ in range(N+1)]
+# 각 학생이 다른 학생보다 작은지 큰지를 저장할 두 개의 그래프를 준비합니다.
+smaller = [[] for _ in range(N+1)]
+bigger = [[] for _ in range(N+1)]
+
+# 비교 결과를 입력 받아 그래프를 구성합니다.
 for _ in range(M):
-    a , b = map(int, input().split())
-    heights[a].append(b)
+    a, b = map(int, input().split())
+    smaller[b].append(a)
+    bigger[a].append(b)
 
-smaller = [0] * (N+1)
-visited =[False for _ in range(N+1)]
-stack= []
-
-while stack:
-    for i in range(N+1):
-        if heights[i]:
-            stack.append()
+answer =0
+for student in range(1, N+1):
+    if dfs(smaller, student) + dfs(bigger, student) == N - 1:
+        answer += 1
 
 
-
-for row in heights:
-    print(row)
-
+print(answer)
 
