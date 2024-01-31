@@ -12,7 +12,6 @@ def dijkstra(graph, start):
 
     while queue:
         current_distance, current_node = heapq.heappop(queue)
-        print(queue)
         if distances[current_node] < current_distance:
             continue
 
