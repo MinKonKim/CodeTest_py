@@ -1,0 +1,14 @@
+#임스와 함께하는 미니게임
+import sys
+sys.stdin = open('C:\\CodeTest_py\\input.txt', "r")
+
+N, G = input().split()
+players = [input() for _ in range(int(N))]
+num_play = len(set(players))
+
+if G == 'F':
+    print(num_play//2)
+elif G == 'O':
+    print(num_play//3)
+else:
+    print(num_play)
