@@ -9,6 +9,5 @@ i = 1
 while total <N:
     total += 6*i
     i += 1
-    print(total)
     
 print(i)
