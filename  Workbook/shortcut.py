@@ -1,9 +1,7 @@
 #https://www.acmicpc.net/problem/1446
-import heapq
 import sys
 sys.stdin = open('C:\\CodeTest_py\\input.txt', "r")
 
-INF = int(1e9)
 n,d = map(int, input().split())
 
 graph = []

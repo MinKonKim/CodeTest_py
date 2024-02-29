@@ -1,4 +1,5 @@
 # 줄세우기 문제번호 : 2631  알고리즘 : DP
+#  
 import sys
 sys.stdin = open('C:\\CodeTest_py\\input.txt', "r")
 
